@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
+import 'modules/users/views/user_list_screen.dart';
+
 final InAppLocalhostServer localhostServer = InAppLocalhostServer(port: 5600);
 
 Future main() async {
@@ -16,7 +18,7 @@ Future main() async {
     await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
 
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(const MaterialApp(home: UserListScreen()));
 }
 
 class MyApp extends StatefulWidget {
@@ -42,6 +44,8 @@ class _MyAppState extends State<MyApp> {
             onWebViewCreated: (controller) {},
             onLoadStart: (controller, url) {},
             onLoadStop: (controller, url) {},
+            initialSettings:
+                InAppWebViewSettings(allowBackgroundAudioPlaying: true),
           ),
         )
       ]),
